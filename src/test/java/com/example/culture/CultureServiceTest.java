@@ -29,7 +29,7 @@ public class CultureServiceTest {
     @Test
     @DisplayName("culture list 조회2")
     void getCulturesTest2(){
-        CultureVO cultureVO = cultureService.getCulture(1L);
+        CultureVO cultureVO = cultureService.getCulture(56L);
         assertNotNull(cultureVO);
     }
 

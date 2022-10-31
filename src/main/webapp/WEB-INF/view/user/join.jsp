@@ -10,7 +10,7 @@
     <title>회원가입</title>
     <link rel="stylesheet" href="<c:url value="/resources/css/join.css" />">
     <script src="<c:url value="/resources/javascript/jquery-3.6.0.min.js"/>"></script>
-    <%--    <script src="<c:url value="/resources/javascript/agreetxt.js"/>"></script>--%>
+<%--        <script src="<c:url value="/resources/javascript/agreetxt.js"/>"></script>--%>
 
 </head>
 <script>

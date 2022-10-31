@@ -24,11 +24,11 @@ public class CultureDetailController extends CultureController{
         HttpSession session = req.getSession();
         String msg = "";
         try {
-            if(session.getAttribute("user")==null){
-                msg = urlEncoding("먼저 로그인을 해주세요");
-                resp.sendError(401);
-                return;
-            }
+//            if(session.getAttribute("user")==null){
+//                msg = urlEncoding("먼저 로그인을 해주세요");
+//                resp.sendError(401);
+//                return;
+//            }
             //1. 클릭한 목록의 cno를 가져와 db에서 조회
             //2. request영역에 저장후 detail.jsp로 전달
             Long cno = Long.valueOf(req.getParameter("cno"));
