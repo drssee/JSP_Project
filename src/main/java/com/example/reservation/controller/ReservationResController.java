@@ -24,6 +24,10 @@ public class ReservationResController extends ReservationController {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             log.info("ReservationController.doGet");
+            if(req.getSession().getAttribute("user")==null){
+                resp.sendError(401);
+                return;
+            }
             SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
             Date resDate = df.parse
                     (req.getParameter("sel_y") + "/" +
@@ -69,6 +73,9 @@ public class ReservationResController extends ReservationController {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             log.info("ReservationController.doPost");
+            if(Integer.parseInt(req.getParameter("resCnt"))<1){
+                throw new IllegalStateException("잘못된 예약 인원 선택");
+            }
             SimpleDateFormat recvSimpleFormat = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy",Locale.ENGLISH);
             Date resDate = recvSimpleFormat.parse(req.getParameter("resDate"));
             ReservationVO reservationVO = ReservationVO

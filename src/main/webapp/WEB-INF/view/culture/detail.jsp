@@ -53,11 +53,17 @@
                 $(".u_on").css("display","none");
             }
         }
-        let StringOpn = '<c:out value="${culture.getSvc_opn_bgn_dt()}"/>';
-        let opn_bgn_dt = new Date(StringOpn).toLocaleDateString();
-        let StringEnd = '<c:out value="${culture.getSvc_opn_end_dt()}"/>';
-        let opn_end_dt = new Date(StringEnd).toLocaleDateString();
-        $(".detail_date").html('행사기간 : '+opn_bgn_dt+' ~ '+opn_end_dt);
+        let StringOpn = '<c:out value="${culture.getRcpt_bgn_dt()}"/>';
+        let rcpt_bgn_dt = new Date(StringOpn).toLocaleDateString();
+        let StringEnd = '<c:out value="${culture.getRcpt_end_dt()}"/>';
+        let rcpt_end_dt = new Date(StringEnd).toLocaleDateString();
+        $(".detail_date").html('접수기간 : '+rcpt_bgn_dt+' ~ '+rcpt_end_dt);
+
+
+        let StringOpn1 = '<c:out value="${culture.getSvc_opn_bgn_dt()}"/>';
+        let opn_bgn_dt = new Date(StringOpn1).toLocaleDateString();
+        let StringEnd1 = '<c:out value="${culture.getSvc_opn_end_dt()}"/>';
+        let opn_end_dt = new Date(StringEnd1).toLocaleDateString();
         $(".detail_date2").html(opn_bgn_dt+' ~ '+opn_end_dt);
     })
 

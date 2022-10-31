@@ -24,7 +24,7 @@
         <h1 id="logo"><a href="<c:url value="/"/>">SEOUL<br>FESTIVAL</a></h1>
         <nav id="gnb">
             <ul>
-                <li><a href="#">축제안내</a></li>
+                <li><a href="/project/fesAnno">축제안내</a></li>
                 <li><a href="/project/list">예약하기</a></li>
                 <li><a href="/project/notice">공지사항</a></li>
                 <li><a href="/project/myPage">마이페이지</a></li>

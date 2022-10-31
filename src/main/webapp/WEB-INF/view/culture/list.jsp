@@ -73,23 +73,25 @@
                 </script>
             </div>
             <ul id="list_wrap">
+<%--                <c:forEach items="${requestScope.pageResponse.getPageList()}" var="culture">--%>
+<%--                    <script>--%>
+<%--                        $(function(){--%>
+<%--                            let StringOpn = '<c:out value="${culture.getSvc_opn_bgn_dt()}"/>';--%>
+<%--                            let opn_bgn_dt = new Date(StringOpn).toLocaleDateString();--%>
+<%--                            let StringEnd = '<c:out value="${culture.getSvc_opn_end_dt()}"/>';--%>
+<%--                            let opn_end_dt = new Date(StringEnd).toLocaleDateString();--%>
+<%--                            $(".detail_date2").html(opn_bgn_dt+' ~ '+opn_end_dt);--%>
+
+
+<%--                            let StringOpn3 = '<c:out value="${culture.getRcpt_bgn_dt()}"/>';--%>
+<%--                            let opn_bgn_dt3 = new Date(StringOpn3).toLocaleDateString();--%>
+<%--                            let StringEnd3 = '<c:out value="${culture.getRcpt_end_dt()}"/>';--%>
+<%--                            let opn_end_dt3 = new Date(StringEnd3).toLocaleDateString();--%>
+<%--                            $(".detail_date3").html(opn_bgn_dt3+' ~ '+opn_end_dt3);--%>
+<%--                        })--%>
+<%--                    </script>--%>
+<%--                </c:forEach>--%>
                 <c:forEach items="${requestScope.pageResponse.getPageList()}" var="culture">
-                    <script>
-                        $(document).ready(function (){
-                            let StringOpn = '<c:out value="${culture.getSvc_opn_bgn_dt()}"/>';
-                            let opn_bgn_dt = new Date(StringOpn).toLocaleDateString();
-                            let StringEnd = '<c:out value="${culture.getSvc_opn_end_dt()}"/>';
-                            let opn_end_dt = new Date(StringEnd).toLocaleDateString();
-                            $(".detail_date2").html(opn_bgn_dt+' ~ '+opn_end_dt);
-
-
-                            let StringOpn3 = '<c:out value="${culture.getRcpt_bgn_dt()}"/>';
-                            let opn_bgn_dt3 = new Date(StringOpn3).toLocaleDateString();
-                            let StringEnd3 = '<c:out value="${culture.getRcpt_end_dt()}"/>';
-                            let opn_end_dt3 = new Date(StringEnd3).toLocaleDateString();
-                            $(".detail_date3").html(opn_bgn_dt3+' ~ '+opn_end_dt3);
-                        })
-                    </script>
                     <li>
                         <a href="<c:url value="/detail?cno=${culture.getCno()}&page=${requestScope.pageResponse.page}"/>">
                             <p id="list_img">
@@ -99,8 +101,8 @@
                                 <ul id="list_pro_info">
                                     <li><strong>장소명</strong><span>${culture.getPlace_nm()}</span></li>
                                     <li><strong>이용대상</strong><span>${culture.getUse_tgt_info()}</span></li>
-                                    <li><strong>접수기간</strong><span class="detail_date3"></span></li>
-                                    <li><strong>이용기간</strong><span class="detail_date2"></span></li>
+                                    <li><strong>접수기간</strong><span>${culture.getRcpt_bgn_dt().substring(0,10)} ~ ${culture.getRcpt_end_dt().substring(0,10)}</span></li>
+                                    <li><strong>이용기간</strong><span>${culture.getSvc_opn_bgn_dt().substring(0,10)} ~ ${culture.getSvc_opn_end_dt().substring(0,10)}</span></li>
                                 </ul>
                             </div>
                         </a>

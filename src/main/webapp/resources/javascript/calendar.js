@@ -23,7 +23,6 @@ function nextCalendar() {
  * @details 날짜 값을 받아 캘린더 폼을 생성하고, 날짜값을 채워넣는다.
  */
 function buildCalendar() {
-
     let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
     let lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
@@ -100,8 +99,21 @@ function buildCalendar() {
         // @details 예약 연도 비교
         if (today.getFullYear() === from.getFullYear() && today.getFullYear()===to.getFullYear()) {
 
+            /////////////////////임시///////////////////////////////////
+            if(today.getMonth()==from.getMonth()&&today.getMonth()==to.getMonth()){
+                // @details to보다 이후인 경우이면서 이번달에 포함되는 일인경우
+                if ((to.getDate() < day || from.getDate()>day) && Math.sign(day) == 1)
+                    column.style.backgroundColor = "#c5c5c5";
+                else { //예약가능일
+                    if(Math.sign(day) == 1){
+                        column.style.backgroundColor = "#FFFFFF";
+                        column.style.cursor = "pointer";
+                        column.onclick = function() {calendarChoiceDay(this);}
+                    }
+                }
+            }
             // @details 예약 월이 to 일때
-            if (today.getMonth()===to.getMonth()) {
+            else if (today.getMonth()==to.getMonth()) {
 
                 // @details to보다 이후인 경우이면서 이번달에 포함되는 일인경우
                 if (to.getDate() < day && Math.sign(day) == 1)
@@ -113,10 +125,16 @@ function buildCalendar() {
                         column.onclick = function() {calendarChoiceDay(this);}
                     }
                 }
+            }
+            else if (today.getMonth()>to.getMonth()){
+                // if (to.getDate() < day && Math.sign(day) == 1)
+                //     column.style.backgroundColor = "#c5c5c5";
+                if (Math.sign(day) == 1)
+                    column.style.backgroundColor = "#c5c5c5";
+            }
 
-                // @details 예약 월이 from 일때
-            } else if (today.getMonth()===from.getMonth()) {
-
+            // @details 예약 월이 from 일때
+            else if (today.getMonth()==from.getMonth()) {
                 // @details from보다 이전인 경우이면서 이번달에 포함되는 일인경우
                 if (from.getDate() > day && Math.sign(day) == 1)
                     column.style.backgroundColor = "#c5c5c5";
@@ -128,14 +146,62 @@ function buildCalendar() {
                     }
                 }
             }
-
-            else if (today.getMonth() < from.getMonth()) {
-                if (Math.sign(day) == 1 && day <= lastDate.getDate())
-                    column.style.backgroundColor = "#c5c5c5";
-            } else if (today.getMonth() > to.getMonth()) {
-                if (Math.sign(day) == 1 && day <= lastDate.getDate())
+            else if(today.getMonth()<from.getMonth()){
+                // if (to.getDate() < day && Math.sign(day) == 1)
+                //     column.style.backgroundColor = "#c5c5c5";
+                if (Math.sign(day) == 1)
                     column.style.backgroundColor = "#c5c5c5";
             }
+            ////////////////////////////임시////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // // @details 예약 월이 to 일때
+            // if (today.getMonth()==to.getMonth()) {
+            //
+            //     // @details to보다 이후인 경우이면서 이번달에 포함되는 일인경우
+            //     if (to.getDate() < day && Math.sign(day) == 1)
+            //         column.style.backgroundColor = "#c5c5c5";
+            //     else { //예약가능일
+            //         if(Math.sign(day) == 1){
+            //             column.style.backgroundColor = "#FFFFFF";
+            //             column.style.cursor = "pointer";
+            //             column.onclick = function() {calendarChoiceDay(this);}
+            //         }
+            //     }
+            //
+            //     // @details 예약 월이 from 일때
+            // } else if (today.getMonth()==from.getMonth()) {
+            //
+            //     // @details from보다 이전인 경우이면서 이번달에 포함되는 일인경우
+            //     if (from.getDate() > day && Math.sign(day) == 1)
+            //         column.style.backgroundColor = "#c5c5c5";
+            //     else { //예약가능일
+            //         if(Math.sign(day) == 1 && lastDate.getDate() >= day){
+            //             column.style.backgroundColor = "#FFFFFF";
+            //             column.style.cursor = "pointer";
+            //             column.onclick = function () {calendarChoiceDay(this);}
+            //         }
+            //     }
+            // }
+            //
+            // else if (today.getMonth() < from.getMonth()) {
+            //     if (Math.sign(day) == 1 && day <= lastDate.getDate())
+            //         column.style.backgroundColor = "#c5c5c5";
+            // } else if (today.getMonth() > to.getMonth()) {
+            //     if (Math.sign(day) == 1 && day <= lastDate.getDate())
+            //         column.style.backgroundColor = "#c5c5c5";
+            // }
 
         }
         else { // 다른 연도

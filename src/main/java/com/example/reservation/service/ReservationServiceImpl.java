@@ -130,6 +130,9 @@ public class ReservationServiceImpl implements ReservationService{
 
         Connection conn = null;
         try {
+            if(reservationVO.getResCnt()<1){
+                throw new IllegalStateException("잘못된 예약 인원 입력");
+            }
             conn = CONN_UTIL.getConnection();
             //////////////////////////
             conn.setAutoCommit(false);

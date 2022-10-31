@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/common.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/detail.css"/>">
     <link rel="stylesheet" href="<c:url value="/resources/css/board.css"/>">
+    <script src="<c:url value="/resources/javascript/jquery-3.6.0.min.js"/>"></script>
 </head>
 <script>
     window.onpageshow = function(event) {
@@ -67,7 +68,7 @@
 <body>
 <jsp:include page="/WEB-INF/view/common/header.jsp" flush="true" />
 <main id="board_register">
-<!--<jsp:include page="/WEB-INF/view/common/header.jsp" flush="true"/>-->
+
     <div class="sub_tit_line">
         <ul>
             <li class="sub_tit_home"><a href="/project">H</a></li>

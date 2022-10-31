@@ -62,7 +62,7 @@ public class QnAServiceTest {
     @Test
     @DisplayName("qna 조회 단일")
     public void qna5(){
-        QnA_Q_VO qnaq = qnAService.getQnaQ(2L);
+        QnA_Q_VO qnaq = qnAService.getQnaQ(1L);
         System.out.println("qnaq = " + qnaq);
         System.out.println("qnaq.getCnt() = " + qnaq.getCnt());
         assertNotNull(qnaq);

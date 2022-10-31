@@ -15,6 +15,7 @@
     <jsp:include page="/WEB-INF/view/common/commonFiles.jsp" flush="true"/>
     <script src="<c:url value="/resources/javascript/jquery-3.6.0.min.js"/>"></script>
     <link rel="stylesheet" href="<c:url value="/resources/css/sub.css"/>">
+    <script src="<c:url value="/resources/javascript/jquery-3.6.0.min.js"/>"></script>
 </head>
 <script>
     window.onpageshow = function(event) {

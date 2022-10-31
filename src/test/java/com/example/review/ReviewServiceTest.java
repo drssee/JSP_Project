@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.List;
+import java.util.Objects;
 
 import static com.example.common.util.ConnectionUtil.CONN_UTIL;
 import static com.example.common.util.SingletonProvideUtil.SINGLETON_UTIL;
@@ -37,12 +38,14 @@ public class ReviewServiceTest {
                     .content("content/"+i)
                     .grade((int)(Math.random()*5+1))
                     .build();
-            Long result = reviewService.writeReview(reviewVO);
+            reviewService.writeReview(reviewVO);
         }
         //then
-//        Assertions.assertEquals(54L,result);
+        Assertions.assertTrue(
+                reviewService.getReviews(cno, PageRequestVO.builder().build())
+                        .getPageList().size()>0);
     }
-    
+
     @Test
     @DisplayName("리뷰목록 가져오기+페이징 테스트")
     public void readReviewsTest() throws Exception {
@@ -56,6 +59,7 @@ public class ReviewServiceTest {
                 reviewService.getReviews(cno, pageRequestVO);
         //then
         Assertions.assertNotNull(pageResponseVO);
+        System.out.println("pageResponseVO = " + pageResponseVO);
 
         boolean showPrev = pageResponseVO.isShowPrev();
         System.out.println("showPrev = " + showPrev);
@@ -90,14 +94,14 @@ public class ReviewServiceTest {
     @Test
     @DisplayName("리뷰 삭제 테스트")
     public void deleteReviewTest() throws Exception {
-        Long re_no = 2L;
+        Long re_no = 3L;
         Connection conn = null;
         PreparedStatement pstmt = null;
         String sql = "delete\n" +
                 "from review\n" +
                 "where re_no = ?";
         conn = CONN_UTIL.getConnection();
-        conn.setAutoCommit(false);
+        Objects.requireNonNull(conn).setAutoCommit(false);
         pstmt = conn.prepareStatement(sql);
         pstmt.setLong(1,re_no);
         int rowCnt = pstmt.executeUpdate();
