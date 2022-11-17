@@ -1,7 +1,7 @@
 # SEOUL FESTIVAL
-2차 jsp 프로젝트
+Servlet/Jsp 행사 예매 프로젝트
 
-<h2><a href="http://13.124.243.50:8080/project/" target="_blank" >SEOUL FESTIVAL</a></h2>
+<h2><a href="http://13.124.243.50:8080/project/" target="_blank" >http://13.124.243.50:8080/project/</a></h2>
 
 <div id="wrap">
     <img src="proposal_ppt/001.png" alt="#">
