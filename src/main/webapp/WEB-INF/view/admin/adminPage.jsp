@@ -17,30 +17,13 @@
         let user = '<c:out value="${sessionScope.get('user')}"/>';
         console.log("logined_cookie: : " + getCookie("logined_cookie").valueOf());
         console.log("user: " + user);
-        if(user === ""){
-            //alert('로그아웃 상태');
-            $(".u_out").css("display","none");
-            $(".u_admin").css("display","none");
-            $(".u_on").css("display","inline-block");
-        } else{
-            if(user.valueOf()==='admin'){
-                $(".u_admin").css("display","inline-block");
-                $(".u_out").css("display","none");
-                $(".u_on").css("display","none");
-            }
-            else{
-                //alert('로그인 상태');
-                $(".u_out").css("display","inline-block");
-                $(".u_admin").css("display","none");
-                $(".u_on").css("display","none");
-            }
-            //버튼 클릭하면 내용 나타내기/숨기기
-            $(".mypage_list li").on('click',function(){
-                var index = $(this).index() - 1;
-                $(".mypage_con > div").hide();
-                $(".mypage_con > div").eq(index).show();
-            })
-        }
+
+        //버튼 클릭하면 내용 나타내기/숨기기
+        $(".mypage_list li").on('click',function(){
+            var index = $(this).index() - 1;
+            $(".mypage_con > div").hide();
+            $(".mypage_con > div").eq(index).show();
+        })
     })
 </script>
 <body>
@@ -63,7 +46,7 @@
                 <li class="on profile"><img src="<c:url value="/resources/images/user_default.png"/>" alt="" />
                     <h4><c:out value="${sessionScope.user}"/></h4>
                 </li>
-                <li><a href="/project/apiRegist" onclick="alert('행사목록 업데이트')">api 업데이트</a></li>
+                <li><a href="<c:url value="/apiRegist"/>" onclick="alert('행사목록 업데이트')">api 업데이트</a></li>
                 <li><a class="test" href="#">예약 관리</a></li>
                 <script>
                     $(document).ready(function (){  //버튼 클릭하면 내용 나타내기/숨기기

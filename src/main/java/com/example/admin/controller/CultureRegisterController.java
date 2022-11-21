@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import static com.example.common.util.SingletonProvideUtil.SINGLETON_UTIL;
 
-@WebServlet(name="cultureRegisterController",value="/apiRegist")
+@WebServlet(value="/apiRegist")
 @Slf4j
 public class CultureRegisterController extends HttpServlet {
 
