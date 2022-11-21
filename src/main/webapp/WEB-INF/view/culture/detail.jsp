@@ -35,24 +35,7 @@
         let user = '<c:out value="${sessionScope.get('user')}"/>';
         console.log("logined_cookie: : " + getCookie("logined_cookie").valueOf());
         console.log("user: " + user);
-        if(user === ""){
-            //alert('로그아웃 상태');
-            $(".u_out").css("display","none");
-            $(".u_admin").css("display","none");
-            $(".u_on").css("display","inline-block");
-        } else{
-            if(user.valueOf()==='admin'){
-                $(".u_admin").css("display","inline-block");
-                $(".u_out").css("display","none");
-                $(".u_on").css("display","none");
-            }
-            else{
-                //alert('로그인 상태');
-                $(".u_out").css("display","inline-block");
-                $(".u_admin").css("display","none");
-                $(".u_on").css("display","none");
-            }
-        }
+
         let StringOpn = '<c:out value="${culture.getRcpt_bgn_dt()}"/>';
         let rcpt_bgn_dt = new Date(StringOpn).toLocaleDateString();
         let StringEnd = '<c:out value="${culture.getRcpt_end_dt()}"/>';
@@ -274,7 +257,7 @@
             }
             else if(type === 'minus')  {
                 number = parseInt(number) - 1;
-                if(number < 0){number = 0;}
+                if(number < 1){number = 1;}
             }
 
             // 결과 출력

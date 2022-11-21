@@ -53,24 +53,7 @@
             let user = '<c:out value="${sessionScope.get('user')}"/>';
             console.log("logined_cookie: : " + getCookie("logined_cookie").valueOf());
             console.log("user: " + user);
-            if(user === ""){
-                //alert('로그아웃 상태');
-                $(".u_out").css("display","none");
-                $(".u_admin").css("display","none");
-                $(".u_on").css("display","inline-block");
-            } else{
-                if(user.valueOf()==='admin'){
-                    $(".u_admin").css("display","inline-block");
-                    $(".u_out").css("display","none");
-                    $(".u_on").css("display","none");
-                }
-                else{
-                    //alert('로그인 상태');
-                    $(".u_out").css("display","inline-block");
-                    $(".u_admin").css("display","none");
-                    $(".u_on").css("display","none");
-                }
-            }
+
         })
         //에러 내용 표시
         function showTxt(){
@@ -94,10 +77,10 @@
            <h2> BAD REQUEST</h2>
            <strong> Your Request resulted in an error, 잘못된 요청입니다. <br> 다시 한 번 확인해 주세요.</strong>
        </div>
-       <p>
-           <a onclick="showTxt()">에러 오류 확인:</a>
-           <span id="error_txt">에러 내용 삽입</span>
-       </p>
+<%--       <p>--%>
+<%--           <a onclick="showTxt()">에러 오류 확인:</a>--%>
+<%--           <span id="error_txt">에러 내용 삽입</span>--%>
+<%--       </p>--%>
        
        
     </div>

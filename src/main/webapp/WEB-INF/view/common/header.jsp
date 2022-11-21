@@ -31,16 +31,20 @@
             </ul>
         </nav>
         <div id="header_login">
-
-            <a href="/project/logout" class="u_out">로그아웃</a>
-            <a href="/project/myPage" class="u_out">마이페이지</a>
-            <a href="/project/login" class="u_on">로그인</a>
-            <a href="/project/join" class="u_on">회원가입</a>
-
-
-            <a href="/project/logout" class="u_admin">로그아웃</a>
-            <a href="/project/admin" class="u_admin">관리자페이지</a>
-
+            <c:choose>
+                <c:when test="${sessionScope.get('user')==null}">
+                    <a href="/project/login" class="u_on">로그인</a>
+                    <a href="/project/join" class="u_on">회원가입</a>
+                </c:when>
+                <c:when test="${sessionScope.get('user').equals('admin')}">
+                    <a href="/project/logout" class="u_admin">로그아웃</a>
+                    <a href="/project/admin" class="u_admin">관리자페이지</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/project/logout" class="u_out">로그아웃</a>
+                    <a href="/project/myPage" class="u_out">마이페이지</a>
+                </c:otherwise>
+            </c:choose>
         </div>
         <div class="user_name u_out"><strong>${sessionScope.get('user')}</strong> 님, 안녕하세요!</div>
     </div>

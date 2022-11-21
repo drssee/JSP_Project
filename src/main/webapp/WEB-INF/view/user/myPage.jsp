@@ -18,24 +18,7 @@
             let user = '<c:out value="${sessionScope.get('user')}"/>';
             console.log("logined_cookie: : " + getCookie("logined_cookie").valueOf());
             console.log("user: " + user);
-            if(user === ""){
-                //alert('로그아웃 상태');
-                $(".u_out").css("display","none");
-                $(".u_admin").css("display","none");
-                $(".u_on").css("display","inline-block");
-            } else{
-                if(user.valueOf()==='admin'){
-                    $(".u_admin").css("display","inline-block");
-                    $(".u_out").css("display","none");
-                    $(".u_on").css("display","none");
-                }
-                else{
-                    //alert('로그인 상태');
-                    $(".u_out").css("display","inline-block");
-                    $(".u_admin").css("display","none");
-                    $(".u_on").css("display","none");
-                }
-            }
+
             //버튼 클릭하면 내용 나타내기/숨기기
             $(".mypage_list li").on('click',function(){
                 var index = $(this).index() - 1;
