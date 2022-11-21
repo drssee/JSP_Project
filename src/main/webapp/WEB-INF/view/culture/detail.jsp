@@ -85,7 +85,7 @@
             <div>
                 <h1>${culture.getSvc_nm()} <br>
                     <span class="detail_date">행사 기간 : </span>
-<%--                        <fmt:formatDate value="${culture.getSvc_opn_bgn_dt()}" pattern="yyyy/MM/dd" var="getSvc_opn_bgn_dt"/>${getSvc_opn_bgn_dt} ~ <fmt:formatDate value="${culture.getSvc_opn_end_dt()}" pattern="yyyy/MM/dd" var="getSvc_opn_end_dt"/>${getSvc_opn_end_dt}--%>
+                    <%--                        <fmt:formatDate value="${culture.getSvc_opn_bgn_dt()}" pattern="yyyy/MM/dd" var="getSvc_opn_bgn_dt"/>${getSvc_opn_bgn_dt} ~ <fmt:formatDate value="${culture.getSvc_opn_end_dt()}" pattern="yyyy/MM/dd" var="getSvc_opn_end_dt"/>${getSvc_opn_end_dt}--%>
                 </h1>
                 <table id="detail_table">
                     <tr>
@@ -103,12 +103,12 @@
                     <tr>
                         <th>이용기간</th>
                         <td class="detail_date2"></td>
-<%--                        <td><fmt:formatDate value="${culture.getSvc_opn_bgn_dt()}" pattern="yyyy/MM/dd" var="getSvc_opn_bgn_dt"/>${getSvc_opn_bgn_dt} ~ <fmt:formatDate value="${culture.getSvc_opn_end_dt()}" pattern="yyyy/MM/dd" var="getSvc_opn_end_dt"/>${getSvc_opn_end_dt}</td>--%>
+                        <%--                        <td><fmt:formatDate value="${culture.getSvc_opn_bgn_dt()}" pattern="yyyy/MM/dd" var="getSvc_opn_bgn_dt"/>${getSvc_opn_bgn_dt} ~ <fmt:formatDate value="${culture.getSvc_opn_end_dt()}" pattern="yyyy/MM/dd" var="getSvc_opn_end_dt"/>${getSvc_opn_end_dt}</td>--%>
                     </tr>
-<%--                    <tr>--%>
-<%--                        <th>취소기간</th>--%>
-<%--                        <td>${culture.getRevstd_day_nm()} ~ ${culture.getRevstd_day()}</td>--%>
-<%--                    </tr>--%>
+                    <%--                    <tr>--%>
+                    <%--                        <th>취소기간</th>--%>
+                    <%--                        <td>${culture.getRevstd_day_nm()} ~ ${culture.getRevstd_day()}</td>--%>
+                    <%--                    </tr>--%>
                     <tr>
                         <th>이용요금 유무</th>
                         <td>${culture.getPay_ay_nm()}</td>
@@ -141,14 +141,40 @@
                             <strong><i class="material-icons">people</i> 이용 인원:</strong>
                             <span class="select_number_val">
                                 <span id="possibleCnt"></span>
-                                <input type='button' onclick='count("minus")' value='-' /><input type="text" id="useNum" name="useNum" value="0" /><input type='button' onclick='count("plus")' value='+' />
+                                <input type='button' onclick='count("minus")' value='-' /><input type="text" id="useNum" name="useNum" value="1" /><input type='button' onclick='count("plus")' value='+' />
                             </span>
                         </p>
                         <input type="hidden" name="cno" value="${culture.getCno()}">
                         <input type="hidden" name="page" value="${requestScope.page}">
                         <p class="btn_reservation">
-                            <input type="submit" value="예약하기" />
+                            <input id="btn-resSubmit" type="submit" value="예약하기"/>
                         </p>
+                        <script>
+                            $("#btn-resSubmit").click(function (){
+                                let year = Number($("#cal_getYear").val());
+                                let month = Number($("#cal_getMonth").val());
+                                let day = Number($("#cal_getDay").val());
+                                let currentDate = new Date();
+                                let curYear = Number(currentDate.getFullYear());
+                                let curMonth = Number(currentDate.getMonth())+1;
+                                let curDay = Number(currentDate.getDate());
+
+                                if(year===0||month===0||day===0){
+                                    alert('예약 날짜를 확인해주세요.');
+                                    return false;
+                                }
+                                if(year<curYear||month<curMonth){
+                                    alert('올바른 예약 날짜를 선택해주세요(이미 종료된 행사 날짜입니다.)');
+                                    return false;
+                                }
+                                if(month===curMonth){
+                                    if(day<=curDay){
+                                        alert('올바른 예약 날짜를 선택해주세요(이미 종료된 행사 날짜입니다.)');
+                                        return false;
+                                    }
+                                }
+                            });
+                        </script>
                     </form>
                 </div>
             </div>
@@ -157,7 +183,7 @@
             <div>
                 <h2>이용 안내</h2>
                 <div id="description">
-                  ${fn:replace(fn:replace(requestScope.culture.getDtlcont(), "\\r\\n", " "), "\\t", " ")}
+                    ${fn:replace(fn:replace(requestScope.culture.getDtlcont(), "\\r\\n", " "), "\\t", " ")}
                 </div>
             </div>
         </section>
