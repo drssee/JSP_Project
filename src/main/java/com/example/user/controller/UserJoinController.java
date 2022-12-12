@@ -28,6 +28,13 @@ public class UserJoinController extends UserController {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("register ... post");
+        //valid추가 id,pwd notblank
+        String id = req.getParameter("id");
+        String pwd = req.getParameter("pwd");
+        if("".equals(id)||"".equals(pwd)||id.contains(" ")||pwd.contains(" ")){
+            log.error("잘못된 값 입력");
+            throw new IllegalStateException("잘못된 id,pwd값 입력");
+        }
         HttpSession session = req.getSession();
         //폼태그 입력값 유저객체에 저장
         try {

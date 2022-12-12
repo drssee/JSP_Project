@@ -110,7 +110,7 @@
                     </p>
                 </div>
                 <div id="login_btn">
-                    <button type="submit" class="login_submit">회원가입</button>
+                    <button type="submit" class="login_submit" onclick="return checkIdPwd()">회원가입</button>
                     <button type="reset" class="cancel">취소</button>
                 </div>
                 </form>
@@ -169,14 +169,23 @@
             }
         })
 
+        //id,pwd 체크
+        let checkIdPwd = function (){
+            alert("dddd");
+            if(id===undefined||id.length<4||pwd===undefined||pwd.length<8){
+                alert("올바른 값을 입력해주세요.");
+                return false;
+            }
+            return true;
+        })
 
-        //        $(pw1).blur(function() {
-        //            //비밀번호 정규식 확인
-        //            if (!pwdCheck.test(pw1.value)) {
-        //                alert("비밀번호는 영문+숫자+특수문자 조합으로 8-25자리 사용해야 합니다.");
-        //                pw1.focus();
-        //            }
-        //        })
+        // $(pw1).blur(function() {
+        //     //비밀번호 정규식 확인
+        //     if (!pwdCheck.test(pw1.value)) {
+        //         alert("비밀번호는 영문+숫자+특수문자 조합으로 8-25자리 사용해야 합니다.");
+        //         pw1.focus();
+        //     }
+        // })
 
         //비밀번호확인 유효성 검사            
         function checkPw(inputVal) {
