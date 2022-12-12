@@ -110,7 +110,7 @@
                     </p>
                 </div>
                 <div id="login_btn">
-                    <button type="submit" class="login_submit" onclick="return checkIdPwd()">회원가입</button>
+                    <button type="submit" class="login_submit join_submit">회원가입</button>
                     <button type="reset" class="cancel">취소</button>
                 </div>
                 </form>
@@ -170,9 +170,10 @@
         })
 
         //id,pwd 체크
-        let checkIdPwd = function (){
-            alert("dddd");
-            if(id===undefined||id.length<4||pwd===undefined||pwd.length<8){
+        $(".join_submit").click(function (){
+            let id = $("#u_id").val();
+            let pwd = $("#u_pw1").val();
+            if(id===""||id.length<4||pwd===""||pwd.length<8){
                 alert("올바른 값을 입력해주세요.");
                 return false;
             }
