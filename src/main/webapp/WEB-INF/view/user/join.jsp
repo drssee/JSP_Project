@@ -171,7 +171,6 @@
 
         //id,pwd 체크
         let checkIdPwd = function (){
-            alert("dddd");
             if(id===undefined||id.length<4||pwd===undefined||pwd.length<8){
                 alert("올바른 값을 입력해주세요.");
                 return false;
